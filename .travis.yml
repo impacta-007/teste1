@@ -1,10 +1,9 @@
 language: python
-jobs:
-  include:
-  - python: "3.8"
-    env: TEST_SUITE=suite_3_8
-  - python: "pypy"
-    env: TEST_SUITE=suite_pypy
+python:
+  - "3.8"
+
 before_install:
   - python -m pip install --upgrade pip
-script: ./test.py $TEST_SUITE
+
+script:
+  - python test.py
