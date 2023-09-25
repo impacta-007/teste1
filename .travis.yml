@@ -1,12 +1,12 @@
 language: python
 python:
-  - "2.7"
-  - "3.8"
-  # PyPy versions
-  - "pypy"   # currently Python 2.7.13, PyPy 7.1.1
-  - "pypy3"  # currently Python 3.6.9,  PyPy 7.3.1
-# command to install dependencies
-#install:
-  #- pip install -r requirements.txt
-# command to run tests
-script: pytest
+  - '3.8'
+  - '3.7'
+  - '2.7'
+jobs:
+  include:
+    - python: '3.8' # this is not strictly necessary
+      env: EXTRA_TESTS=true
+    - python: '3.7'
+      env: EXTRA_TESTS=true
+script: env $EXTRA_TESTS ./test.py $TEST_SUITE
